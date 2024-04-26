@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+      {% if error %}
+            <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="alert alert-info" role="alert">
+                Vous êtes connecté avec le compte {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card my-5">
+
+          <form class="card-body cardbody-color p-lg-5" method="post">
+
+            <div class="text-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Music_logo.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                width="200px" alt="profile">
+            </div>
+
+            <div class="mb-3">
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" placeholder="Email address" autocomplete="email" required autofocus>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="password" id="inputPassword" class="form-control mb-3" placeholder="Password" autocomplete="current-password" required>
+            </div>
+                <input type="checkbox" class="mb-5" name="_remember_me"> Remember me
+ <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+                <div class="text-center"><button type="submit" class="btn btn-primary px-5 mb-5 w-100">CONNEXION</button></div>
+            
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle musique{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Créer une nouvelle musique</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post">
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.title, 'Titre de la musique') }}
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.duration, 'Durée de la musique') }}
+                        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.album, 'Album') }}
+                        {{ form_widget(form.album, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-5">Créer</button>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+        </div>
+
+        <a href="{{ path('app_web_track_index') }}" class="btn btn-secondary mt-3">Retour à la liste</a>
+    </div>
+{% endblock %}

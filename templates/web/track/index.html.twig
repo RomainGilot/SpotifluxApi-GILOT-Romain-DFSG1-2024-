@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Track index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Liste des musiques</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Durée</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for track in tracks %}
+                    <tr>
+                        <td>{{ track.id }}</td>
+                        <td>{{ track.title }}</td>
+                        <td>{{ track.duration }}</td>
+                        <td>
+                            <a href="{{ path('app_web_track_show', {'id': track.id}) }}" class="btn btn-primary btn-sm">Regarder</a>
+                            <a href="{{ path('app_web_track_edit', {'id': track.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune ligne</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ path('app_web_track_new') }}" class="btn btn-success">Créer une nouvelle musique</a>
+    </div>
+{% endblock %}

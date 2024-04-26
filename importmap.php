@@ -25,4 +25,11 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.3',
+        'type' => 'css',
+    ],
+    'bootstrap/dist/js/bootstrap.bundle.min.js' => [
+        'version' => '5.3.3',
+    ],
 ];

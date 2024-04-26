@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Track{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Détails de la musique</h1>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>{{ track.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Titre</th>
+                        <td>{{ track.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Durée</th>
+                        <td>{{ track.duration }}</td>
+                    </tr>
+                     <tr>
+                        <th scope="row">Albums</th>
+                        <td>
+                                {{track.album.name}},
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ path('app_web_track_index') }}" class="btn btn-primary">Revenir en arrière</a>
+
+        <a href="{{ path('app_web_track_edit', {'id': track.id}) }}" class="btn btn-secondary">Modifier</a>
+
+        {{ include('web/track/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

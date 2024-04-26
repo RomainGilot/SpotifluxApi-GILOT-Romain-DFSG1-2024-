@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Artist{% endblock %}
+
+{% block body %}
+
+<form method="post" class="container mt-4">
+    <div class="row">
+    <div class="col-md-6">
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.title, 'Titre de la musique') }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.duration, 'Durée de la musique') }}
+        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+    </div>
+      <div class="form-group">
+        {{ form_label(form.album, 'Liste des albums') }}
+        {{ form_widget(form.album, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {{ include('web/track/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ form_end(form) }}
+
+        <a href="{{ path('app_web_track_index') }}" class="btn btn-secondary mt-3">Annuler</a>
+
+        {{ include('web/track/_delete_form.html.twig') }}
+    </div>
+    </div>
+</form>
+{% endblock %}

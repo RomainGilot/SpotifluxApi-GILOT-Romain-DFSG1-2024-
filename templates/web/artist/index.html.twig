@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artist index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Liste des artistes</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom des artistes</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for artist in artists %}
+                    <tr>
+                        <td>{{ artist.id }}</td>
+                        <td>{{ artist.name }}</td>
+                        <td>
+                            <a href="{{ path('app_web_artist_show', {'id': artist.id}) }}" class="btn btn-primary btn-sm">Regarder</a>
+                            <a href="{{ path('app_web_artist_edit', {'id': artist.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune ligne</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ path('app_web_artist_new') }}" class="btn btn-success">Créer un artiste</a>
+    </div>
+{% endblock %}

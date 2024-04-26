@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Liste de tous les albums</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom de l'album</th>
+                        <th scope="col">Année de sortie</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for album in albums %}
+                    <tr>
+                        <td>{{ album.id }}</td>
+                        <td>{{ album.name }}</td>
+                        <td>{{ album.year }}</td>
+                        <td>
+                            <a href="{{ path('app_web_album_show', {'id': album.id}) }}" class="btn btn-primary btn-sm">Regarder</a>
+                            <a href="{{ path('app_web_album_edit', {'id': album.id}) }}" class="btn btn-secondary btn-sm">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune ligne</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{{ path('app_web_album_new') }}" class="btn btn-success">Créer un album</a>
+    </div>
+{% endblock %}
